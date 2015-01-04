@@ -1,0 +1,34 @@
+$green: #43a900;
+$blue: #0190e6;
+$orange: #ff8f12;
+
+body {
+	background-color: #f8f8f8;
+}
+
+nav.navbar {
+	background-color: $orange;
+	height: 7em;
+}
+
+div.plant-card {
+
+	width: 100%;
+
+	h2 {
+		color: $green;
+	}
+
+	ul {
+		text-align: left;
+		padding-left: 1.5em;
+	}
+}
+
+div.plant.col-lg-4 {
+	float: left;
+}
+
+img.plant-pic {
+	max-width: 100%;
+}

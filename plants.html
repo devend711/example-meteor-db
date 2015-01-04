@@ -1,17 +1,51 @@
 <head>
-  <title>Plants</title>
+  <title>Available Plants</title>
 </head>
  
 <body>
-	<h2>Plants</h2>
-  {{> plants}}
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">
+	        <h1>Plants</h1>
+	      </a>
+	    </div>
+	  </div>
+	</nav>
+
+	<div class="container">
+	  {{> plants}}
+  </div>
 </body>
  
 <template name="plants">
+   <div class="row">
     {{#each plantArray}}
-        <div class="plant">
-            <h2>{{name}}</h2>
-            <p>Size: {{fruitSize}}</p>
-        </div>
+    	<div class="plant col-lg-3">
+	      <div class="plant-card well">
+	      		{{#if imageUrl}}
+	      			<img class="plant-pic" src="{{imageUrl}}">
+	      		{{else}}
+	      			<img class="plant-pic" src="/images/default-plant-icon.png">
+	      		{{/if}}
+
+	          <h2>{{name}}</h2>
+
+	          <p>{{description}}</p>
+	          <p>Size: {{size}}</p>
+
+	          {{#if tips}}
+	          	<p>
+		          	Tips:
+		          	<ul>
+			          	{{#each tips}}
+			          		<li>{{this}}</li>
+			          	{{/each}}
+		          	</ul>
+	          	</p>
+	          {{/if}}
+	      </div>
+      </div>
     {{/each}}
+   </div>
 </template>

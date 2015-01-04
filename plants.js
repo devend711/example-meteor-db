@@ -1,4 +1,26 @@
+PlantSchema = new SimpleSchema({
+  name: {
+    type: String,
+  },
+  description: {
+    type: String
+  },
+  size: {
+    type: String
+  },
+  imageUrl: {
+    type: String,
+    optional: true
+  },
+  tips: {
+    type: [String],
+    optional: true
+  }
+})
+
 var Plants = new Meteor.Collection("Plants");
+
+Plants.attachSchema(PlantSchema);
 
 if (Meteor.isClient) { 
   Template.plants.helpers({
@@ -10,30 +32,15 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    // code to run on server at startup
+    if (Plants.find().count() == 0) { // seed the DB if empty
+      var json = JSON.parse(Assets.getText('seed.json'));
+      for (i=0; i<json.length; i++) {
+        try {
+          Plants.insert(json[i]);
+        } catch(err) {
+          console.log("Unable to add: " + JSON.stringify(json[i]));
+        }
+      }
+    }
   });
 }
-
-
-PlantSchema = new SimpleSchema({
-  name: {
-    type: String,
-    label: "Name",
-  },
-  size: {
-    type: String,
-    label: "Size"
-  }
-})
-
-
-
-Meteor.methods({
-  addPlant: function(newPlant){
-    if (Match.test(newPlant, PlantSchema)){
-      return Plants.insert(newPlant);
-    } else {
-      throw new Meteor.Error(413, "Invalid plant!");
-    }
-  }
-});
