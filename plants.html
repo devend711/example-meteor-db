@@ -1,0 +1,17 @@
+<head>
+  <title>Plants</title>
+</head>
+ 
+<body>
+	<h2>Plants</h2>
+  {{> plants}}
+</body>
+ 
+<template name="plants">
+    {{#each plantArray}}
+        <div class="plant">
+            <h2>{{name}}</h2>
+            <p>Size: {{fruitSize}}</p>
+        </div>
+    {{/each}}
+</template>
