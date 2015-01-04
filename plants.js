@@ -23,14 +23,19 @@ var Plants = new Meteor.Collection("Plants");
 Plants.attachSchema(PlantSchema);
 
 if (Meteor.isClient) { 
-  Template.plants.helpers({
-    plantArray: function(){
-      return Plants.find({}, {sort: {name: 1}});
-    }
-  });
+  // Template.plants.helpers({
+  //   plantArray: function(){
+  //     return Plants.find({}, {sort: {name: 1}});
+  //   }
+  // });
+  Meteor.subscribe('plantArray');
 }
 
 if (Meteor.isServer) {
+  Meteor.publish('plantArray', function(){
+    return Plants.find({}, {sort: {name: 1}});
+  });
+  
   Meteor.startup(function () {
     if (Plants.find().count() == 0) { // seed the DB if empty
       var json = JSON.parse(Assets.getText('seed.json'));
