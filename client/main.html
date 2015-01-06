@@ -36,8 +36,18 @@
 
 	        <h2>{{name}}</h2>
 
-	        <p>{{description}}</p>
-	        <p>Size: {{size}}</p>
+	        <p><h4>{{description}}</h4></p>
+
+	        {{#if info}}
+	        	<p>
+	          	Info:
+	          	<ul>
+		          	{{#each info}}
+		          		<li>{{this}}</li>
+		          	{{/each}}
+	          	</ul>
+	        	</p>
+	        {{/if}}
 
 	        {{#if tips}}
 	        	<p>

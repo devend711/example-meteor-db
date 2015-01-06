@@ -1,5 +1,5 @@
 {
   "includePaths": [
-    ".meteor/scss/*"
+    ".meteor/client/stylesheets/*"
   ]
 }
