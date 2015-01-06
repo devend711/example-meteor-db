@@ -23,20 +23,37 @@ var Plants = new Meteor.Collection("Plants");
 Plants.attachSchema(PlantSchema);
 
 if (Meteor.isClient) { 
-  // Template.plants.helpers({
-  //   plantArray: function(){
-  //     return Plants.find({}, {sort: {name: 1}});
-  //   }
-  // });
-  Meteor.subscribe('plantArray');
+  Meteor.subscribe('plants');
+
+  Template.plants.helpers({
+    plants: function() {
+      if (Session.get("searchTerm") && Session.get("searchTerm") != "") { // if there's a search term, filter the results
+        return Plants.find({"name": new RegExp([Session.get("searchTerm")].join(""),"i")}, 
+                            {sort: {name: 1}});
+      }
+      return Plants.find({}, {sort: {name: 1}});
+    },
+
+    reapplyMasonry: function() {
+      setTimeout(function(){
+        applyMasonry();
+      }, 1000);
+    }
+  });
+
+  Template.body.events({
+    "change input#search": function(event) {
+      Session.set("searchTerm", event.target.value);
+    }
+  });
 }
 
 if (Meteor.isServer) {
-  Meteor.publish('plantArray', function(){
-    return Plants.find({}, {sort: {name: 1}});
+  Meteor.publish('plants', function() {
+    return Plants.find({}, {sort: {name: 1}}); // publish all of them for now
   });
-  
-  Meteor.startup(function () {
+
+  Meteor.startup(function() {
     if (Plants.find().count() == 0) { // seed the DB if empty
       var json = JSON.parse(Assets.getText('seed.json'));
       for (i=0; i<json.length; i++) {
@@ -48,4 +65,14 @@ if (Meteor.isServer) {
       }
     }
   });
+}
+
+function applyMasonry() {
+  console.log('called masonry');
+  $container = $('#plants-container');
+  $container.masonry({
+    itemSelector: '.plant-card',
+    gutterWidth: 15
+  });
+  $container.masonry('reloadItems');
 }

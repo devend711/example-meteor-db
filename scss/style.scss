@@ -1,17 +1,23 @@
 $green: #43a900;
 $blue: #0190e6;
 $orange: #ff8f12;
+$bg: #f8f8f8;
 
 body {
-	background-color: #f8f8f8;
+	background-color: $bg;
 }
 
 nav.navbar {
 	background-color: $orange;
+
+	a.navbar-brand {
+		color: $bg; 
+	}
 }
 
 div.plant-card {
-	width: 100%;
+	float: left;
+	width: 250px;
 
 	h2 {
 		color: $green;
@@ -21,12 +27,19 @@ div.plant-card {
 		text-align: left;
 		padding-left: 1.5em;
 	}
+
+	.img-holder {
+		width: 100%;
+		text-align: center;
+
+		img.plant-pic {
+			max-width: 100%;
+			margin: 0 auto;
+		}
+	}
 }
 
 div.plant.col-lg-4 {
 	float: left;
-}
-
-img.plant-pic {
-	max-width: 100%;
+	max-width: 250px;
 }

@@ -1,5 +1,8 @@
 [
 	{"name": "Chiquita Tomatoes", "description": "Nice red color and flavorful", "size": "Small", "tips" : ["Use stakes for a healthier plant", "Try them with olive oil"], "imageUrl" : "http://cdn1.johnnyseeds.com/images/Product/large/2853.jpg"},
 	{"name": "Jalafuego Peppers", "description": "Hot pepper with a good yield", "size": "Small", "imageUrl" : "http://cdn1.johnnyseeds.com/images/Product/large/3807.jpg"},
-	{"name": "Adriana Lettuce", "description": "Tastes great in salads", "size": "Large", "imageUrl" : "http://www.aquaclarafarms.com/images/adriana-u894.jpg"}
+	{"name": "Adriana Lettuce", "description": "Tastes great in salads", "size": "Large", "imageUrl" : "http://www.aquaclarafarms.com/images/adriana-u894.jpg"},
+	{"name": "2Chiquita Tomatoes", "description": "Nice red color and flavorful", "size": "Small", "tips" : ["Use stakes for a healthier plant", "Try them with olive oil"], "imageUrl" : "http://cdn1.johnnyseeds.com/images/Product/large/2853.jpg"},
+	{"name": "2Adriana Lettuce", "description": "Tastes great in salads", "size": "Large", "imageUrl" : "http://www.aquaclarafarms.com/images/adriana-u894.jpg"},
+	{"name": "2Jalafuego Peppers", "description": "Hot pepper with a good yield", "size": "Small", "imageUrl" : "http://cdn1.johnnyseeds.com/images/Product/large/3807.jpg"}
 ]

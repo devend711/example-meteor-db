@@ -1,5 +1,5 @@
 <head>
-  <title>Available Plants</title>
+  <title>Plants</title>
 </head>
  
 <body>
@@ -10,6 +10,10 @@
 	        Plants
 	      </a>
 	    </div>
+
+      <form class="navbar-form navbar-left">
+    		<input type="text" class="form-control col-lg-8" id="search" placeholder="Search by name">
+      </form>
 	  </div>
 	</nav>
 
@@ -19,33 +23,34 @@
 </body>
  
 <template name="plants">
-   <div class="row">
-    {{#each plantArray}}
-    	<div class="plant col-lg-3">
-	      <div class="plant-card well">
+	<div id="plants-container">
+	  {{#each plants}}
+	    <div class="plant-card well">
+	    		<div class="img-holder">
 	      		{{#if imageUrl}}
 	      			<img class="plant-pic" src="{{imageUrl}}">
 	      		{{else}}
 	      			<img class="plant-pic" src="/images/default-plant-icon.png">
 	      		{{/if}}
+	    		</div>
 
-	          <h2>{{name}}</h2>
+	        <h2>{{name}}</h2>
 
-	          <p>{{description}}</p>
-	          <p>Size: {{size}}</p>
+	        <p>{{description}}</p>
+	        <p>Size: {{size}}</p>
 
-	          {{#if tips}}
-	          	<p>
-		          	Tips:
-		          	<ul>
-			          	{{#each tips}}
-			          		<li>{{this}}</li>
-			          	{{/each}}
-		          	</ul>
-	          	</p>
-	          {{/if}}
-	      </div>
-      </div>
-    {{/each}}
-   </div>
+	        {{#if tips}}
+	        	<p>
+	          	Tips:
+	          	<ul>
+		          	{{#each tips}}
+		          		<li>{{this}}</li>
+		          	{{/each}}
+	          	</ul>
+	        	</p>
+	        {{/if}}
+	    </div>
+	    {{reapplyMasonry}}
+	  {{/each}}
+  </div>
 </template>
